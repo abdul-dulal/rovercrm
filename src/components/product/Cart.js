@@ -4,6 +4,9 @@ import { CiEdit } from "react-icons/ci";
 import { FaTruckMoving } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
 import CustomerModal from "./AddCustomerModal";
+import AddNote from "./AddNote";
+import Shiping from "./Shiping";
+import Items from "./Items";
 const Cart = () => {
   const [modal, setModal] = useState("");
   return (
@@ -31,9 +34,9 @@ const Cart = () => {
           ))}
         </div>
         {modal === "Add Customer" ? <CustomerModal /> : ""}
-        {modal === "Note" ? <CustomerModal /> : ""}
-        {modal === "Shiping" ? <CustomerModal /> : ""}
-        {modal === "Note" ? <CustomerModal /> : ""}
+        {modal === "Note" ? <AddNote /> : ""}
+        {modal === "Shiping" ? <Shiping /> : ""}
+        {modal === "Items" ? <Items /> : ""}
       </div>
     </div>
   );

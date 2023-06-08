@@ -1,9 +1,11 @@
 import { useRef, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import CustomerInfo from "./CustomerInfo";
+import ShipingAddress from "./ShipingAddress";
 const AddCustomerModal = () => {
   const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(true);
-  const [address, setAddress] = useState("customer information");
+  const [address, setAddress] = useState("customer info");
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -18,10 +20,10 @@ const AddCustomerModal = () => {
     <div>
       {isOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-50 bg-[rgba(0,0,0,0.4)]"
+          className="fixed inset-0 flex items-center justify-center z-50 bg-[rgba(0,0,0,0.4)] overflow-y-scroll"
           onClick={handleOutsideClick}
         >
-          <div className="lg:w-7/12 md:w-4/5 m-auto mt-10">
+          <div className="xl:w-6/12 lg:w-8/12 md:w-4/5 m-auto mt-10 ">
             <div ref={modalRef} className="bg-white p-4 rounded shadow-lg">
               <div className="flex justify-between">
                 <h2 className="text-lg font-normal mb-4 text-[#000000]">
@@ -36,27 +38,39 @@ const AddCustomerModal = () => {
               </div>
               <hr />
 
-              <div className="bg-white rounded-md shadow-lg my-3">
-                <div className="flex gap-8">
-                  {["customer information", "shiping address"].map(
-                    (element) => (
-                      <div
-                        className={`cursor-pointer uppercase text-[#000000] text-sm font-semibold h-11 w-full `}
-                      >
-                        <p
-                          onClick={() => setAddress(element)}
-                          className={`${
-                            element == address
-                              ? "bg-[#04A9F5] h-full w-full"
-                              : ""
-                          }`}
-                        >
-                          {element}
-                        </p>
-                      </div>
-                    )
-                  )}
+              <div className="bg-white rounded-md shadow-lg my-3 px-4">
+                <div className="flex gap-8 ">
+                  <button
+                    onClick={() => setAddress("customer info")}
+                    className={`cursor-pointer uppercase text-[#000000] text-sm font-medium h-11 px-4 rounded-sm ${
+                      address === "shiping" ? "bg-[#04A9F5] text-white" : ""
+                    }`}
+                  >
+                    customer information
+                  </button>
+                  <button
+                    onClick={() => setAddress("shiping")}
+                    className={`cursor-pointer uppercase text-[#000000] text-sm font-medium ${
+                      address === "shiping" ? "" : "flex-grow"
+                    } text-left h-11 pl-4 rounded-sm ${
+                      address === "customer info"
+                        ? "bg-[#04A9F5] text-white"
+                        : ""
+                    }`}
+                  >
+                    shiping address
+                  </button>
+                  <button
+                    className={`${
+                      address === "shiping" ? "bg-[#04A9F5] flex-grow" : ""
+                    }`}
+                  />
                 </div>
+                {address === "customer info" ? (
+                  <CustomerInfo setIsOpen={setIsOpen} />
+                ) : (
+                  <ShipingAddress />
+                )}
               </div>
             </div>
           </div>
