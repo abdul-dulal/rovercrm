@@ -2,11 +2,12 @@ import { useRef, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import Close from "../shere/Close";
 
-const AddNote = () => {
+const AddNote = ({ setModal }) => {
   const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(true);
   const closeModal = () => {
     setIsOpen(false);
+    setModal("");
   };
 
   const handleOutsideClick = (event) => {
@@ -19,12 +20,12 @@ const AddNote = () => {
     <div>
       {isOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-50 bg-[rgba(0,0,0,0.4)] overflow-y-scroll"
+          className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.4)] overflow-y-scroll"
           onClick={handleOutsideClick}
         >
           <div className="xl:w-2/6 lg:w-3/6 md:w-3/5 w-4/5 m-auto mt-10 ">
             <div ref={modalRef} className="bg-white p-4 rounded shadow-lg">
-              <Close title=" Add note to the order" setIsOpen={setIsOpen} />
+              <Close title=" Add note to the order" closeModal={closeModal} />
               <hr />
               <div className="mt-3">
                 <p className="text-sm text-[#000000] font-normal">order note</p>
@@ -49,7 +50,7 @@ const AddNote = () => {
                     <hr />
                     <div className="flex justify-end gap-3">
                       <button
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => closeModal()}
                         className=" my-10 rounded h-9 w-[76px]  bg-red-700 text-white"
                       >
                         Close
@@ -60,7 +61,7 @@ const AddNote = () => {
                       >
                         submit
                       </button>
-                    </div>{" "}
+                    </div>
                   </Form>
                 </Formik>
               </div>

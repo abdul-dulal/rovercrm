@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { customerSchema } from "../../utils/Validation";
 
-const CustomerInfo = ({ setIsOpen }) => {
-  console.log(setIsOpen);
+const CustomerInfo = ({ closeModal }) => {
   const [countries, setCountries] = useState([]);
   const initialValues = {
     fName: "",
@@ -226,7 +225,7 @@ const CustomerInfo = ({ setIsOpen }) => {
             </div>
             <div className="flex justify-end gap-3">
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={() => closeModal()}
                 className=" my-10 rounded h-9 w-[76px]  bg-red-700 text-white"
               >
                 Close

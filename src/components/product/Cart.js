@@ -7,6 +7,7 @@ import CustomerModal from "./AddCustomerModal";
 import AddNote from "./AddNote";
 import Shiping from "./Shiping";
 import Items from "./Items";
+import ProductTable from "./ProductTable";
 
 const Cart = () => {
   const [modal, setModal] = useState("");
@@ -35,11 +36,12 @@ const Cart = () => {
             </li>
           ))}
         </div>
-        {modal === "Add Customer" ? <CustomerModal /> : ""}
-        {modal === "Note" ? <AddNote /> : ""}
-        {modal === "Shiping" ? <Shiping /> : ""}
-        {modal === "Items" ? <Items /> : ""}
+        {modal === "Add Customer" && <CustomerModal setModal={setModal} />}
+        {modal === "Note" && <AddNote setModal={setModal} />}
+        {modal === "Shiping" && <Shiping setModal={setModal} />}
+        {modal === "Items" && <Items setModal={setModal} />}
       </div>
+      <ProductTable />
     </div>
   );
 };

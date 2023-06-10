@@ -1,13 +1,14 @@
 import { useRef, useState } from "react";
-import { RxCross2 } from "react-icons/rx";
 import CustomerInfo from "./CustomerInfo";
 import ShipingAddress from "./ShipingAddress";
-const AddCustomerModal = () => {
+import Close from "../shere/Close";
+const AddCustomerModal = ({ setModal }) => {
   const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(true);
   const [address, setAddress] = useState("customer info");
   const closeModal = () => {
     setIsOpen(false);
+    setModal("");
   };
 
   const handleOutsideClick = (event) => {
@@ -20,22 +21,13 @@ const AddCustomerModal = () => {
     <div>
       {isOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-50 bg-[rgba(0,0,0,0.4)] overflow-y-scroll"
+          className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.4)] overflow-y-scroll"
           onClick={handleOutsideClick}
         >
+          0
           <div className="xl:w-6/12 lg:w-8/12 md:w-4/5 m-auto mt-10 ">
             <div ref={modalRef} className="bg-white p-4 rounded shadow-lg">
-              <div className="flex justify-between">
-                <h2 className="text-lg font-normal mb-4 text-[#000000]">
-                  Add Customer
-                </h2>
-                <span
-                  className="cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <RxCross2 size={20} />
-                </span>
-              </div>
+              <Close title="Add Customer" closeModal={closeModal} />
               <hr />
 
               <div className="bg-white rounded-md shadow-lg my-3 px-4">
@@ -67,9 +59,9 @@ const AddCustomerModal = () => {
                   />
                 </div>
                 {address === "customer info" ? (
-                  <CustomerInfo setIsOpen={setIsOpen} />
+                  <CustomerInfo closeModal={closeModal} />
                 ) : (
-                  <ShipingAddress />
+                  <ShipingAddress closeModal={closeModal} />
                 )}
               </div>
             </div>
