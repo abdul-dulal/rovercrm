@@ -7,7 +7,7 @@ import { GoScreenFull } from "react-icons/go";
 const TopHeader = () => {
   return (
     <div>
-      <nav className="flex  space-x-4 py-3">
+      <nav className="flex flex-wrap  sm:space-x-4  gap-x-3 gap-y-3 py-3">
         {[
           ["Dashboard", "dashboard", <BiHome />],
           ["Hill Valley", "team", <CiLocationOn />],

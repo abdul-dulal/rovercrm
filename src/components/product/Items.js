@@ -1,12 +1,10 @@
 import { useRef, useState } from "react";
-import { RxCross2 } from "react-icons/rx";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import { itemSchema } from "../../utils/Validation";
+import { Formik, Field, Form } from "formik";
 import Swal from "sweetalert2";
+import Close from "../shere/Close";
 const Shiping = () => {
   const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(true);
-  const [err, setError] = useState("");
   const initialValues = {
     item: "",
     desc: "",
@@ -25,7 +23,7 @@ const Shiping = () => {
     }
   };
 
-  const test = (data) => {
+  const errorModal = (data) => {
     Swal.fire({
       icon: "error",
       text: data,
@@ -34,15 +32,16 @@ const Shiping = () => {
   const onSubmit = (value) => {
     // eslint-disable-next-line no-unused-expressions
     value.item == ""
-      ? test("hello")
+      ? errorModal("Item name can not be empty")
       : value.price == ""
-      ? test("give price")
+      ? errorModal("Price cant not be zero or empty")
       : value.quantity == ""
-      ? test("quantity")
+      ? errorModal("Quantity cant not be zero or empty")
       : "";
     console.log(value);
   };
-
+  const style =
+    " border border-[#BFBFBF]  w-full h-9  px-3  placeholder:font-normal placeholder:text-[#888888] placeholder:text-sm   focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm";
   return (
     <div>
       {isOpen && (
@@ -52,17 +51,7 @@ const Shiping = () => {
         >
           <div className="xl:w-2/6 lg:w-3/6 md:w-3/5 w-4/5  m-auto mt-10 ">
             <div ref={modalRef} className="bg-white p-4 rounded shadow-lg">
-              <div className="flex justify-between">
-                <h2 className="text-lg font-normal mb-4 text-[#000000]">
-                  Add custom item
-                </h2>
-                <span
-                  className="cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <RxCross2 size={20} />
-                </span>
-              </div>
+              <Close title=" Add custom item" setIsOpen={setIsOpen} />
               <hr />
               <div className="mt-3">
                 <div className="px-4 mt-5">
@@ -86,11 +75,10 @@ const Shiping = () => {
                                 name="item"
                                 type="text"
                                 placeholder="Items name"
-                                className=" border border-[#BFBFBF]  w-full h-9  px-3  placeholder:font-normal placeholder:text-[#888888] placeholder:text-sm   focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
+                                className={`${style}`}
                               ></Field>
                             </div>
                           </div>
-                          <ErrorMessage name="item" />
                           <div className="sm:flex block  items-center">
                             <div className="sm:w-3/12 block">
                               <label className=" text-sm text-[#888888] font-normal  ">
@@ -103,7 +91,7 @@ const Shiping = () => {
                                 name="desc"
                                 as="textarea"
                                 rows="2"
-                                className=" border border-[#BFBFBF] w-full  px-3 placeholder:font-normal placeholder:text-[#888888] placeholder:text-sm  focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
+                                className={`${style}`}
                               ></Field>
                             </div>
                           </div>
@@ -119,7 +107,7 @@ const Shiping = () => {
                                 name="price"
                                 type="text"
                                 placeholder="Unit price"
-                                className=" border border-[#BFBFBF] w-full h-9  px-3 placeholder:text-sm font-normal text-[#888888]    focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
+                                className={`${style}`}
                               ></Field>
                             </div>
                           </div>
@@ -135,7 +123,7 @@ const Shiping = () => {
                                 name="quantity"
                                 type="text"
                                 placeholder="Quantity"
-                                className=" border border-[#BFBFBF] w-full h-9  px-3 placeholder:text-sm font-normal  placeholder:text-[#888888]    focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
+                                className={`${style}`}
                               ></Field>
                             </div>
                           </div>

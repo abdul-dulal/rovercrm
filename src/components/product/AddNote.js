@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { RxCross2 } from "react-icons/rx";
 import { Formik, Field, Form } from "formik";
+import Close from "../shere/Close";
 
 const AddNote = () => {
   const modalRef = useRef();
@@ -24,17 +24,7 @@ const AddNote = () => {
         >
           <div className="xl:w-2/6 lg:w-3/6 md:w-3/5 w-4/5 m-auto mt-10 ">
             <div ref={modalRef} className="bg-white p-4 rounded shadow-lg">
-              <div className="flex justify-between">
-                <h2 className="text-lg font-normal mb-4 text-[#000000]">
-                  Add note to the order
-                </h2>
-                <span
-                  className="cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <RxCross2 size={20} />
-                </span>
-              </div>
+              <Close title=" Add note to the order" setIsOpen={setIsOpen} />
               <hr />
               <div className="mt-3">
                 <p className="text-sm text-[#000000] font-normal">order note</p>

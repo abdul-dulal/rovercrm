@@ -7,15 +7,17 @@ import CustomerModal from "./AddCustomerModal";
 import AddNote from "./AddNote";
 import Shiping from "./Shiping";
 import Items from "./Items";
+
 const Cart = () => {
   const [modal, setModal] = useState("");
+
   return (
-    <div className="bg-white shadow-md py-5">
-      <div className="flex items-center ml-5  ">
-        <div className="border border-primary  h-8 w-[275px] rounded-sm">
+    <div className="bg-white shadow-md py-5 w-full">
+      <div className="flex flex-wrap items-center ml-5  ">
+        <div className="border border-primary  h-8 lg:w-5/12 md:w-7/12 w-5/12 rounded-sm">
           <h1>hello</h1>
         </div>
-        <div className="flex py-3">
+        <div className="flex py-1">
           {[
             ["Add Customer", <TbUserPlus />],
             ["Note", <CiEdit />],
@@ -27,7 +29,7 @@ const Cart = () => {
               onClick={() => {
                 setModal(title);
               }}
-              className="flex  list-none border border-l-0  border-primary text-primary items-center px-2 py-1 text-[15px] font-normal hover:bg-primary hover:text-white cursor-pointer transition duration-500"
+              className="flex whitespace-nowrap list-none border lg:border-l-0  border-primary text-primary sm:text-sm text-[13px] items-center px-2 py-[5px]  font-normal hover:bg-primary hover:text-white cursor-pointer transition duration-500"
             >
               <span> {icon}</span> {title}
             </li>
