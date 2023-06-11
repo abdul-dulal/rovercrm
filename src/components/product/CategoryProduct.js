@@ -20,13 +20,36 @@ const CategoryProduct = ({ category }) => {
   }
 
   const handleClick = (product) => {
-    if (product.quantity < 1) {
+    if (product.quantity === 0) {
       return Swal.fire({
         icon: "error",
         text: "Stock not available",
       });
     } else {
-      setCartProduct([...cartProduct, product]);
+      const existItem = cartProduct?.find((item) => item.id === product.id);
+      if (existItem) {
+        const updatedQuatity = cartProduct.map((item) => {
+          if (item.id === product.id) {
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+            };
+          }
+          return item;
+        });
+        const checkStock = updatedQuatity.find((e) => e.id === product.id);
+
+        if (checkStock.quantity === checkStock.inStock + 1) {
+          return Swal.fire({
+            icon: "error",
+            text: "Stock not available",
+          });
+        } else {
+        }
+        setCartProduct(updatedQuatity);
+      } else {
+        setCartProduct([...cartProduct, product]);
+      }
     }
   };
 

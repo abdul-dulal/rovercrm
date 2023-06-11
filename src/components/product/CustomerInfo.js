@@ -20,6 +20,7 @@ const CustomerInfo = ({ closeModal }) => {
 
   const onSubmit = (values) => {
     console.log(values);
+    closeModal();
   };
   return (
     <div className="px-4 mt-5">

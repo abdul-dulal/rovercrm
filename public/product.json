@@ -5,7 +5,8 @@
     "price": 900.0,
     "quantity": 1,
     "category": "Electronics",
-    "id": 1
+    "id": 1,
+    "inStock": 2
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/e6a2659da1bf086cf5daa79a98fab48a_1_apple-iphone-11-1-500x500.jpg",
@@ -13,7 +14,8 @@
     "price": 705.0,
     "quantity": 1,
     "category": "Electronics",
-    "id": 2
+    "id": 2,
+    "inStock": 4
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/f784d64fe1319c9ca2ff65b715a611e8_1_samsunggalaxya9jpg.jpg",
@@ -21,7 +23,8 @@
     "price": 299.0,
     "quantity": 1,
     "category": "Electronics",
-    "id": 10
+    "id": 10,
+    "inStock": 4
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/750e1779266a73e1e9c6eca0d6afb930_1_huawei-p30-pro.jpg",
@@ -29,7 +32,8 @@
     "price": 550.0,
     "quantity": 1,
     "category": "Electronics",
-    "id": 3
+    "id": 3,
+    "inStock": 6
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/bde66b8ef0bfe6079512f5ab72728462_1_apple_watch_series_4.jpg",
@@ -37,7 +41,8 @@
     "price": 700.0,
     "quantity": 1,
     "category": "Electronics",
-    "id": 4
+    "id": 4,
+    "inStock": 3
   },
 
   {
@@ -46,7 +51,8 @@
     "price": 1090.0,
     "quantity": 1,
     "category": "Electronics",
-    "id": 6
+    "id": 6,
+    "inStock": 7
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/73ae9277c2422c10b934996968f4e94c_1_vacuumcleanerpng.png",
@@ -95,7 +101,8 @@
     "price": 30.0,
     "quantity": 1,
     "category": "Home & Lifestyle",
-    "id": 13
+    "id": 13,
+    "inStock": 4
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/a121d01996be8872e6a474d580697db4_1_81n-9sdsr6l.jpg",
@@ -112,7 +119,8 @@
     "price": 120.0,
     "quantity": 1,
     "category": "Home & Lifestyle",
-    "id": 15
+    "id": 15,
+    "inStock": 3
   },
 
   {
@@ -129,7 +137,8 @@
     "price": 5.0,
     "quantity": 1,
     "category": "Grocery",
-    "id": 18
+    "id": 18,
+    "inStock": 2
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/69794a32093232e88029158b651fd61b_1_kelloggs-corn-flakes-real-mango-300-gm-1014139.jpg",
@@ -161,7 +170,8 @@
     "price": 1.0,
     "quantity": 1,
     "category": "Food & Beverage",
-    "id": 22
+    "id": 22,
+    "inStock": 6
   },
   {
     "productImg": "https://rovercrm.net/public/uploads/items/9b5d5fe35d9e385b66709f46d192cb5a_1_15_v_16_macbookpro_thumb1200_4-3.jpg",

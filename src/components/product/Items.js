@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import Swal from "sweetalert2";
 import Close from "../shere/Close";
+import { productContext } from "../../App";
 const Shiping = ({ setModal }) => {
   const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(true);
+  const [cartProduct, setCartProduct] = useContext(productContext);
   const initialValues = {
     item: "",
     desc: "",
@@ -31,15 +33,28 @@ const Shiping = ({ setModal }) => {
     });
   };
   const onSubmit = (value) => {
-    // eslint-disable-next-line no-unused-expressions
-    value.item === ""
-      ? errorModal("Item name can not be empty")
-      : value.price === ""
-      ? errorModal("Price cant not be zero or empty")
-      : value.quantity === ""
-      ? errorModal("Quantity cant not be zero or empty")
-      : "";
-    console.log(value);
+    if (value.item !== "" && value.price !== "" && value.quantity !== "") {
+      setCartProduct([
+        ...cartProduct,
+        {
+          productName: value.item,
+          price: value.price,
+          quantity: value.quantity,
+          desc: value.desc,
+          id: Math.random().toFixed(2),
+        },
+      ]);
+      closeModal();
+    } else {
+      // eslint-disable-next-line no-unused-expressions
+      return value.item === ""
+        ? errorModal("Item name can not be empty")
+        : value.price === ""
+        ? errorModal("Price cant not be zero or empty")
+        : value.quantity === ""
+        ? errorModal("Quantity cant not be zero or empty")
+        : "";
+    }
   };
   const style =
     " border border-[#BFBFBF]  w-full h-9  px-3  placeholder:font-normal placeholder:text-[#888888] placeholder:text-sm   focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm";
@@ -47,7 +62,7 @@ const Shiping = ({ setModal }) => {
     <div className="">
       {isOpen && (
         <div
-          className="fixed inset-0 flex items-center justify-center z-[9999] bg-[rgba(0,0,0,0.4)] overflow-y-scroll"
+          className="fixed inset-0 flex items-center justify-center z-[99] bg-[rgba(0,0,0,0.4)] overflow-y-scroll"
           onClick={handleOutsideClick}
         >
           <div className="xl:w-2/6 lg:w-3/6 md:w-3/5 w-4/5  m-auto mt-10 ">
@@ -92,7 +107,7 @@ const Shiping = ({ setModal }) => {
                                 name="desc"
                                 as="textarea"
                                 rows="2"
-                                className={`${style}`}
+                                className=" border border-[#BFBFBF] w-full px-3  placeholder:font-normal placeholder:text-[#888888] placeholder:text-sm   focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
                               ></Field>
                             </div>
                           </div>

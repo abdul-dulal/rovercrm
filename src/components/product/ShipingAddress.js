@@ -20,12 +20,13 @@ const ShipingAddress = ({ closeModal }) => {
 
   const onSubmit = (values) => {
     console.log(values);
+    closeModal();
   };
   return (
     <div className="px-4 mt-5">
       <Formik
         initialValues={initialValues}
-        validationSchema={customerSchema}
+        validationSchema=""
         onSubmit={onSubmit}
       >
         {({ errors }) => (

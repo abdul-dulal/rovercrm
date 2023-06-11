@@ -33,7 +33,7 @@ const AddNote = ({ setModal }) => {
                 <Formik
                   initialValues={{ description: "" }}
                   onSubmit={(values, actions) => {
-                    // Handle form submission
+                    closeModal();
                   }}
                 >
                   <Form>

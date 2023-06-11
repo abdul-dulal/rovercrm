@@ -22,6 +22,7 @@ const Shiping = ({ setModal }) => {
   };
   const onSubmit = (value) => {
     console.log(value);
+    closeModal();
   };
 
   return (

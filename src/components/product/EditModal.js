@@ -1,13 +1,17 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Formik, Field, Form } from "formik";
 import Close from "../shere/Close";
+import { productContext } from "../../App";
 const EditModal = ({ product, setModal }) => {
   const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(true);
-  const { productName } = product;
+  const [cartProduct, setCartProduct] = useContext(productContext);
+  console.log(product);
+
+  const { productName, desc, id } = product;
   const initialValues = {
     item: productName,
-    desc: "",
+    desc: desc,
     discount: "0",
     tax: "",
   };
@@ -23,7 +27,18 @@ const EditModal = ({ product, setModal }) => {
   };
 
   const onSubmit = (value) => {
-    console.log(value);
+    const updatedQuatity = cartProduct.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          productName: value.item,
+        };
+      }
+      return item;
+    });
+
+    setCartProduct(updatedQuatity);
+    closeModal();
   };
   const style =
     " border border-[#BFBFBF]  w-full h-9  px-3  placeholder:font-normal placeholder:text-[#888888] placeholder:text-sm   focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm";
