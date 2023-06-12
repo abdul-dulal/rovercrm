@@ -8,15 +8,26 @@ import AddNote from "./AddNote";
 import Shiping from "./Shiping";
 import Items from "./Items";
 import ProductTable from "./ProductTable";
-
+import Select from "react-select";
 const Cart = () => {
   const [modal, setModal] = useState("");
+  const options = [
+    { value: "Walking customer (USD)", label: "Walking customer (USD)" },
+    { value: "William Jones (USD)", label: "William Jones (USD)" },
+    { value: "Agatha wiliam (USD)", label: "Agatha wiliam (USD)" },
+    { value: "Harvey Morrison (GBP)", label: "Harvey Morrison (GBP)" },
+    { value: "Anke Kaisar (GBP)", label: "Anke Kaisar (GBP)" },
+  ];
 
   return (
     <div className="bg-white shadow-md py-5 w-full">
       <div className="flex flex-wrap items-center ml-5  ">
-        <div className="border border-primary  h-8 lg:w-5/12 md:w-7/12 w-5/12 rounded-sm">
-          <h1>hello</h1>
+        <div className=" lg:w-5/12 md:w-7/12 w-5/12 ">
+          <Select
+            defaultValue={options[0]}
+            options={options}
+            className="w-full max-w-xs p-2 rounded-md"
+          />
         </div>
         <div className="flex py-1">
           {[

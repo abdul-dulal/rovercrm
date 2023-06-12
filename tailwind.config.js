@@ -18,5 +18,6 @@ module.exports = {
   plugins: [
     require("tw-elements/dist/plugin.cjs"),
     require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/forms"),
   ],
 };

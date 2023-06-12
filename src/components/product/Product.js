@@ -69,7 +69,7 @@ const Product = () => {
             </div>
           </div>
         </div>
-        <div className="h-[650px] overflow-y-scroll border border-[#aaa] rounded-md p-2 ">
+        <div className="h-[550px] overflow-y-scroll border border-[#aaa] rounded-md p-2 ">
           <CategoryProduct category={category} />
         </div>
       </div>
