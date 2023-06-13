@@ -7,6 +7,7 @@ const Checkout = () => {
   const [inputAmaount, setInputAmaount] = useContext(amaountContext);
   const [selectValue, setSelectValue] = useContext(discountContext);
   const [inputValue, setInputValue] = useState(0);
+  const [discountType, setDiscountType] = useState("exclusive");
 
   const priceArray = cartProduct.map((e) => e.price * e.quantity);
   const taxArray = cartProduct.map((tax) => tax.tax * tax.quantity);
@@ -17,10 +18,10 @@ const Checkout = () => {
   const tax = taxArray.reduce((accumulator, currentValue) => {
     return accumulator + currentValue;
   }, 0);
-  const total = subTotal + tax;
+  const total = discountType === "exclusive" ? subTotal + tax : subTotal;
   const flatTotal = total - inputAmaount;
   const parcentage = (inputAmaount / 100) * total;
-  const parcentageTotal = flatTotal - parcentage;
+  const parcentageTotal = total - parcentage;
   const netPayment =
     selectValue === "flat" ? flatTotal.toFixed(3) : parcentageTotal.toFixed(3);
 
@@ -84,7 +85,12 @@ const Checkout = () => {
           </tr>
         </tbody>
       </table>
-      <BottomHeader total={total} netPayment={netPayment} />
+      <BottomHeader
+        total={total}
+        netPayment={netPayment}
+        discountType={discountType}
+        setDiscountType={setDiscountType}
+      />
     </div>
   );
 };

@@ -8,15 +8,22 @@ import Discount from "./Discount";
 import Payment from "./Payment";
 import { productContext } from "../../App";
 import Tax from "./Tax";
+import Cancel from "./Cancel";
 
-const BottomHeader = ({ total, netPayment }) => {
+const BottomHeader = ({ total, netPayment, discountType, setDiscountType }) => {
   const [modal, setModal] = useState("");
   const [cartProduct, setCartProduct] = useContext(productContext);
 
   const modalComponents = {
-    Cancel: <AddNote setModal={setModal} />,
-    Setting: <Tax setModal={setModal} />,
-    Hold: <Hold setModal={setModal} />,
+    Cancel: <Cancel />,
+    Setting: (
+      <Tax
+        setModal={setModal}
+        discountType={discountType}
+        setDiscountType={setDiscountType}
+      />
+    ),
+    Hold: <Hold setModal={setModal} netPayment={netPayment} />,
     Discount: <Discount setModal={setModal} total={total} />,
     Pay: <Payment setModal={setModal} netPayment={netPayment} />,
   };

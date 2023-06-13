@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import Close from "./shere/Close";
 import Button from "./shere/Button";
 
-const Hold = ({ setModal }) => {
+const Hold = ({ setModal, netPayment }) => {
   const modalRef = useRef();
   const [isOpen, setIsOpen] = useState(true);
   const closeModal = () => {
@@ -53,8 +53,8 @@ const Hold = ({ setModal }) => {
                   <div className="sm:w-2/6 block">
                     <input
                       name="fName"
-                      placeholder="Order Title"
-                      className="bg-white border border-[#BFBFBF] w-full h-9  px-3 placeholder:text-sm font-normal text-[#888888]    focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
+                      value={netPayment}
+                      className="bg-gray-200 border border-[#BFBFBF] w-full h-9  px-3 placeholder:text-sm font-normal text-[#888888]    focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
                     />
                   </div>
                 </div>

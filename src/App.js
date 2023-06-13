@@ -10,9 +10,8 @@ const App = () => {
   const [inputAmaount, setInputAmaount] = useState(0);
   const [selectValue, setSelectValue] = useState("flat");
 
-  // max-w-screen-2xl mx-auto
   return (
-    <div className="px-5 ">
+    <div className="px-5 max-w-screen-2xl mx-auto ">
       <productContext.Provider value={[cartProduct, setCartProduct]}>
         <amaountContext.Provider value={[inputAmaount, setInputAmaount]}>
           <discountContext.Provider value={[selectValue, setSelectValue]}>

@@ -28,12 +28,17 @@ const Discount = ({ setModal, total }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (parseFloat(input) >= total) {
-      return ErrorModal("Discount amount cannot be more than the total amount");
+      return ErrorModal("Discount amount cannot be more than total amount");
+    }
+    if (selectValue === "parcentage" && parseFloat(input) >= 101) {
+      return ErrorModal("Discount amount cannot be more than 100%");
     }
 
     setInputAmaount(e.target.amaount.value);
+    setSelectValue("flat");
     closeModal();
   };
+  console.log(selectValue);
 
   return (
     <div>

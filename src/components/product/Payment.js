@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Close from "../shere/Close";
 import Cash from "./Cash";
+import Card from "./Card";
 
 const Payment = ({ setModal, netPayment }) => {
   const modalRef = useRef();
@@ -52,6 +53,22 @@ const Payment = ({ setModal, netPayment }) => {
               </div>
               {selectedValue === "cash" && (
                 <Cash netPayment={netPayment} closeModal={closeModal} />
+              )}
+              {selectedValue === "card" && (
+                <Card
+                  netPayment={netPayment}
+                  closeModal={closeModal}
+                  selectedValue={selectedValue}
+                  setSelectedctValue={setSelectedctValue}
+                />
+              )}
+              {selectedValue === "cheque" && (
+                <Card
+                  netPayment={netPayment}
+                  closeModal={closeModal}
+                  selectedValue={selectedValue}
+                  setSelectedctValue={setSelectedctValue}
+                />
               )}
             </div>
           </div>
