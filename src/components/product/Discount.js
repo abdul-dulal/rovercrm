@@ -35,9 +35,10 @@ const Discount = ({ setModal, total }) => {
     }
 
     setInputAmaount(e.target.amaount.value);
-    setSelectValue("flat");
+    setSelectValue(selectValue);
     closeModal();
   };
+
   console.log(selectValue);
 
   return (
@@ -65,10 +66,15 @@ const Discount = ({ setModal, total }) => {
                         onChange={({ target }) => setSelectValue(target.value)}
                         className="bg-white border border-[#BFBFBF] w-full h-9  px-3 placeholder:text-sm font-normal text-[#888888]    focus:outline-1 focus:ring focus:outline-gray-200  rounded-sm"
                       >
-                        <option className="py-5 " value="flat">
+                        <option selected={selectValue === "flat"} value="flat">
                           Flat
                         </option>
-                        <option value="parcentage">Parcentage</option>
+                        <option
+                          selected={selectValue === "parcentage"}
+                          value="parcentage"
+                        >
+                          Parcentage
+                        </option>
                       </select>
                     </div>
                   </div>
@@ -102,9 +108,9 @@ const Discount = ({ setModal, total }) => {
                     </button>
                     <button
                       type="submit"
-                      className=" mt-10 rounded h-9 w-[88px]  bg-[#038FCF] text-white"
+                      className=" mt-10 rounded h-9 px-3  bg-[#038FCF] text-white"
                     >
-                      submit
+                      Add Discount
                     </button>
                   </div>
                 </form>
