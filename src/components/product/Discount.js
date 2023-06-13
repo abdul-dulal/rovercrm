@@ -39,8 +39,6 @@ const Discount = ({ setModal, total }) => {
     closeModal();
   };
 
-  console.log(selectValue);
-
   return (
     <div>
       {isOpen && (
